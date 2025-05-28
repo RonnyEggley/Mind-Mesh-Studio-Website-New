@@ -1,3 +1,4 @@
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -399,7 +400,7 @@ header.scrolled .logo img {
 
 .hero p {
     font-size: 1.3rem;
-    margin-bottom: 40
+    margin-bottom: 40;
     color: rgba(255, 255, 255, 0.9);
     animation: fadeInUp 1s ease 0.2s both;
 }
@@ -2211,4 +2212,5 @@ footer {
 .pricing-features ul li i {
     color: #2196f3;
     margin-right: 8px;
+
 }
