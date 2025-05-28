@@ -323,22 +323,29 @@ header.scrolled .logo img {
 
 /* Hero Section */
 .hero {
-    background: url('Img/20250512_1216_Futuristic Digital Landscape_simple_compose_01jv26qvddfyys9h22pwk8nm0b.png') left center/cover no-repeat;
-    min-height: 480px;
-    padding: 60px 0 40px 0;
+    background: url('Img/Futuristic Digital Landscape.png') center center/cover no-repeat;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
     position: relative;
 }
-.hero::before {
+.hero::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255,255,255,0.85);
-    z-index: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
 }
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-flex, .hero-content, .hero-art {
     position: relative;
     z-index: 1;
 }
+
 .hero {
     background-color: var(--dark);
     color: #fff;
@@ -392,7 +399,7 @@ header.scrolled .logo img {
 
 .hero p {
     font-size: 1.3rem;
-    margin-bottom: 40px;
+    margin-bottom: 40
     color: rgba(255, 255, 255, 0.9);
     animation: fadeInUp 1s ease 0.2s both;
 }
@@ -583,16 +590,21 @@ header.scrolled .logo img {
     text-align: center;
 }
 
-/* Service Card Hover Fix: Ensure text remains readable on turquoise hover */
-.service-card:hover {
-    background: rgba(26, 188, 156, 0.85); /* translucent turquoise */
-    color: #fff;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    border: 1px solid #fff;
-    z-index: 2;
-    position: relative;
-    opacity: 1;
-    transition: background 0.3s, color 0.3s;
+/* Completely remove hover background and color change for service cards */
+.service-card:hover,
+.service-card:hover::before,
+.service-card:hover::after {
+    background: unset !important;
+    color: unset !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12) !important;
+    opacity: unset !important;
+}
+.service-card:hover *,
+.service-card:hover h3,
+.service-card:hover p,
+.service-card:hover a,
+.service-card:hover .service-icon {
+    color: unset !important;
 }
 
 /* Why Choose Us Section */
@@ -1136,68 +1148,23 @@ footer {
 
 /* Page Banner */
 .page-banner {
-    background-color: var(--dark);
-    color: #fff;
-    padding: 150px 0 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    min-height: 200px;
-    height: 200px;
+    background: url('Img/Digital Service Showcase.png') center center/cover no-repeat;
+    min-height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
-
-.page-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/placeholder.svg?height=400&width=1600') center/cover no-repeat;
-    opacity: 0.2;
-    z-index: 0;
-}
-
 .page-banner::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 198, 255, 0.3) 0%, rgba(0, 114, 255, 0.3) 100%);
-    z-index: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
 }
-
 .page-banner .container {
     position: relative;
-    z-index: 1;
-    min-height: 0;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.page-banner h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    background: var(--gradient-1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.page-banner p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
+    z-index: 2;
 }
 
 /* Services Page Styles */
@@ -2170,233 +2137,78 @@ footer {
 /* Pricing Section */
 .pricing-grid.pricing-happy {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-}
-.pricing-card.happy-bg-1 {
-    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-    color: #fff;
-}
-.pricing-card.happy-bg-2 {
-    background: linear-gradient(135deg, #ff3e7f 0%, #ff0844 100%);
-    color: #fff;
-}
-.pricing-card.happy-bg-3 {
-    background: linear-gradient(135deg, #7f00ff 0%, #e100ff 100%);
-    color: #fff;
-}
-.pricing-card.happy-bg-4 {
-    background: linear-gradient(135deg, #10b981 0%, #1de9b6 100%);
-    color: #fff;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 32px;
+    justify-items: center;
+    align-items: start;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 .pricing-card {
-    border-radius: 18px;
-    box-shadow: 0 4px 24px #00c6ff11;
-    padding: 28px 18px 24px 18px;
-    text-align: center;
-    min-width: 0;
-    max-width: 320px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    overflow: hidden;
+    background: #fff;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
 }
-.pricing-header h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+.pricing-header {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.pricing-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    display: block;
+}
+@supports not (aspect-ratio: 1 / 1) {
+    .pricing-thumb {
+        height: 350px;
+        width: 100%;
+    }
+}
+
+/* Pricing features backgrounds to match the dominant color of each product image */
+.pricing-card.happy-bg-1 .pricing-features {
+    background: #e0f7fa; /* Light cyan to match Basic Package */
+}
+.pricing-card.happy-bg-2 .pricing-features {
+    background: #ede7f6; /* Light purple to match Standard Package */
+}
+.pricing-card.happy-bg-3 .pricing-features {
+    background: #fff8e1; /* Light yellow to match Premium Package */
+}
+.pricing-card.happy-bg-4 .pricing-features {
+    background: #e8f5e9; /* Light green to match Elite Package */
+}
+.pricing-card.happy-bg-5 .pricing-features {
+    background: #e3f2fd; /* Light blue to match Web App Package */
+}
+.pricing-card.happy-bg-6 .pricing-features {
+    background: #fce4ec; /* Light pink to match Mobile App Package */
 }
 .pricing-features {
-    text-align: left;
-    vertical-align: top;
-    font-size: 0.95rem;
-    margin-bottom: 0;
-    padding: 18px 0 0 0;
+    border-radius: 0 0 16px 16px;
+    padding: 18px 0 18px 0;
 }
-.pricing-features ul {
-    margin: 0;
-    padding: 0 0 0 0;
-}
-.pricing-features li {
-    font-size: 0.95rem;
-    margin-bottom: 6px;
-    text-align: left;
-    vertical-align: top;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    padding-left: 28px;
-    position: relative;
-}
-.pricing-features li i {
-    min-width: 20px;
-    text-align: left;
-    position: absolute;
-    left: 0;
-    top: 2px;
-}
-.pricing-footer .btn-primary {
-    background: #fff;
-    color: #0072ff;
-    border: none;
-    font-weight: 600;
-    border-radius: 8px;
-    padding: 10px 22px;
-    margin-top: 10px;
-    transition: background 0.3s, color 0.3s;
-}
-.pricing-footer .btn-primary:hover {
-    background: #111827;
-    color: #fff;
-}
-.pricing-header .price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0;
-    margin-top: 6px;
-    line-height: 1.2;
-}
-@media (max-width: 1100px) {
-    .pricing-grid.pricing-happy {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 700px) {
-    .pricing-grid.pricing-happy {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Hero Flex Section */
-.hero-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-.hero-art {
-    max-width: 600px;
-    width: 100%;
-    height: auto;
-    border-radius: 24px;
-    box-shadow: var(--shadow-lg);
-    flex: 1 1 500px;
-    order: 1;
-}
-.hero-content {
-    flex: 2 1 400px;
-    order: 2;
-    text-align: left;
-}
-@media (max-width: 900px) {
-    .hero-flex {
-        flex-direction: column;
-        gap: 24px;
-    }
-    .hero-art, .hero-content {
-        order: unset;
-        max-width: 100%;
-    }
-    .hero-content {
-        text-align: center;
-    }
-}
-
-/* Hero/Page Banner background for all pages */
-.page-banner {
-    background: url('Img/20250512_1224_Digital Service Showcase_simple_compose_01jv2751ymf53b32kfsdzb6rha.png') center center/cover no-repeat;
-    color: #fff;
-    position: relative;
-    z-index: 1;
-}
-.page-banner .container {
-    position: relative;
-    z-index: 2;
-}
-.page-banner::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 1;
-}
-.page-banner .container {
-    display: block;
-    text-align: center;
-    gap: 0;
-}
-
-
-}
-/* Reduce footer menu font size and tighten spacing for a single column */
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    align-items: flex-start;
-    font-size: 0.92rem; /* Reduced font size */
-}
-
-.footer-links a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s;
-    font-weight: 500;
-    padding: 0;
-    margin: 0;
-    line-height: 1.2;
-}/* Footer: uniform font size and vertical spacing */
-.footer-logo,
-.footer-links,
-.footer-contact,
-.footer-social,
-.footer-links a,
-.footer-contact p,
-.footer-social a,
-.footer-social span {
-    font-size: 0.95rem !important;
-    line-height: 1.5 !important;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    align-items: flex-start;
-}
-
-.footer-links a {
-    margin-bottom: 0;
-    padding: 0;
-}
-
-.footer-contact p {
-    margin-bottom: 0;
-    padding: 0;
-}
-
-.footer-social a {
-    margin-bottom: 0;
-    padding: 0;
-}/* Ensure the X (Twitter) icon in the footer is white */
-.footer-social .fa-x-twitter {
-    color: #fff !important;
-}
-
-/* Footer social media handle colors */
-.footer-social .fa-facebook-f, .footer-facebook {
-    color: #1877f3 !important;
+.pricing-features ul li {
+    color: #222;
+    font-size: 1.08rem;
     font-weight: 500;
 }
-.footer-social .fa-instagram, .footer-instagram {
-    color: #e4405f !important;
-    font-weight: 500;
-}
-.footer-social .fa-x-twitter, .footer-x {
-    color: #fff !important;
-    font-weight: 500;
+.pricing-features ul li i {
+    color: #2196f3;
+    margin-right: 8px;
 }
